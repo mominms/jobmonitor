@@ -1,0 +1,84 @@
+{
+    "manifest_version": 3,
+    "name": "Job Harvester V3",
+    "version": "3.0.0",
+    "description": "AI-powered job lead harvester for Upwork, LinkedIn, Indeed, and more",
+    "permissions": [
+        "tabs",
+        "storage",
+        "alarms",
+        "activeTab",
+        "scripting",
+        "notifications"
+    ],
+    "host_permissions": [
+        "https://www.upwork.com/*",
+        "https://www.linkedin.com/*",
+        "https://wellfound.com/*",
+        "https://www.indeed.com/*",
+        "https://www.efinancialcareers.com/*",
+        "http://localhost:8002/*"
+    ],
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
+        }
+    },
+    "background": {
+        "service_worker": "background/service-worker.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.upwork.com/*"
+            ],
+            "js": [
+                "content/upwork.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://www.linkedin.com/*"
+            ],
+            "js": [
+                "content/linkedin.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://www.indeed.com/jobs*",
+                "https://www.indeed.com/viewjob*"
+            ],
+            "js": [
+                "content/indeed.js"
+            ]
+        },
+        {
+            "matches": [
+                "http://localhost:3001/*",
+                "http://localhost:3000/*"
+            ],
+            "js": [
+                "content/dashboard-bridge.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://wellfound.com/jobs*",
+                "https://wellfound.com/role/*"
+            ],
+            "js": [
+                "content/wellfound.js"
+            ]
+        }
+    ],
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    }
+}

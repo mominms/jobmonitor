@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI Job Harvester</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Job Harvester</h1>
+            <p class="subtitle">Job Monitor V3</p>
+        </header>
+
+        <section class="status-section">
+            <div class="status-indicator" id="status">
+                <span class="dot"></span>
+                <span class="text">Ready</span>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-value" id="harvested-count">0</span>
+                    <span class="stat-label">Harvested</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="tabs-count">0</span>
+                    <span class="stat-label">Tabs Open</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="controls">
+            <button id="start-btn" class="btn btn-primary">
+                ▶ Start Monitoring
+            </button>
+            <button id="stop-btn" class="btn btn-secondary" disabled>
+                ⏹ Stop
+            </button>
+        </section>
+
+        <section class="sites-section">
+            <h3>Platforms</h3>
+            <div class="site-list">
+                <label class="site-toggle">
+                    <input type="checkbox" id="site-upwork" checked>
+                    <span class="site-name">Upwork</span>
+                    <span class="site-status" id="upwork-status">—</span>
+                </label>
+                <label class="site-toggle">
+                    <input type="checkbox" id="site-linkedin" checked>
+                    <span class="site-name">LinkedIn</span>
+                    <span class="site-status" id="linkedin-status">—</span>
+                </label>
+                <label class="site-toggle">
+                    <input type="checkbox" id="site-indeed" checked>
+                    <span class="site-name">Indeed</span>
+                    <span class="site-status" id="indeed-status">—</span>
+                </label>
+                <label class="site-toggle">
+                    <input type="checkbox" id="site-wellfound">
+                    <span class="site-name">Wellfound</span>
+                    <span class="site-status" id="wellfound-status">—</span>
+                </label>
+                <label class="site-toggle">
+                    <input type="checkbox" id="site-rss" checked>
+                    <span class="site-name">RSS Feeds</span>
+                    <span class="site-status" id="rss-status">—</span>
+                </label>
+            </div>
+        </section>
+
+        <section class="actions">
+            <button id="harvest-btn" class="btn btn-accent">
+                🌾 Harvest Current Page
+            </button>
+            <button id="open-dashboard" class="btn btn-link">
+                Open Dashboard ↗
+            </button>
+        </section>
+
+        <footer>
+            <p>v3.0.0 • <a href="#" id="settings-link">Settings</a></p>
+        </footer>
+    </div>
+
+    <!-- Settings View (Hidden by default) -->
+    <div class="container settings-view hidden" id="settings-view">
+        <header>
+            <button id="back-btn" class="btn-icon">←</button>
+            <h1>⚙️ Configuration</h1>
+        </header>
+
+        <section class="settings-group">
+            <h3 class="section-title">🕒 Schedule</h3>
+            <label>
+                <div class="label-text">Refresh Interval (min)</div>
+                <input type="number" id="setting-interval" min="1" value="15">
+            </label>
+            <label>
+                <div class="label-text">Max Tabs Per Site</div>
+                <input type="number" id="setting-max-tabs" min="1" max="10" value="3">
+            </label>
+        </section>
+
+        <section class="settings-group">
+            <h3 class="section-title">☁️ Cloud Configuration</h3>
+            <label>
+                <div class="label-text">Backend API URL</div>
+                <input type="text" id="setting-api-url" placeholder="http://localhost:8002">
+            </label>
+            <label>
+                <div class="label-text">API Key / Access Code</div>
+                <input type="password" id="setting-api-key" placeholder="Enter your secret key">
+            </label>
+        </section>
+
+        <section class="keywords-group">
+            <h3>Search Keywords</h3>
+            <p class="hint">Comma-separated lists</p>
+
+            <label>
+                <span>Upwork</span>
+                <textarea id="kw-upwork" rows="2"></textarea>
+            </label>
+            <label>
+                <span>LinkedIn</span>
+                <textarea id="kw-linkedin" rows="2"></textarea>
+            </label>
+            <label>
+                <span>Indeed</span>
+                <textarea id="kw-indeed" rows="2"></textarea>
+            </label>
+            <label>
+                <span>Wellfound</span>
+                <textarea id="kw-wellfound" rows="2"></textarea>
+            </label>
+        </section>
+
+        <section class="actions">
+            <button id="save-settings-btn" class="btn btn-primary">
+                💾 Save Changes
+            </button>
+        </section>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>
