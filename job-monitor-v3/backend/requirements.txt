@@ -1,0 +1,16 @@
+fastapi>=0.104.0
+uvicorn>=0.24.0
+pydantic>=2.0.0
+requests>=2.31.0
+feedparser>=6.0.10
+python-dotenv>=1.0.0
+groq>=0.4.0
+apscheduler>=3.10.4
+psycopg2-binary>=2.9.9
+
+# Dev Dependencies
+pytest>=7.4.0
+black>=23.7.0
+flake8>=6.1.0
+mypy>=1.5.0
+httpx>=0.24.1
